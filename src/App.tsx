@@ -1,4 +1,63 @@
+import View from './components/View'
 import './App.css'
+
+interface ViewProps {
+  statType: string;
+  image: string;
+  newStat: string;
+  tendance?: string;
+  tenddown?: string;
+}
+
+const todayStats : ViewProps[]=[{
+  statType: "Page Views",
+  image: "./images/icon-facebook.svg",
+  newStat: '87',
+  tendance: '▲ 3%',    
+},
+{
+  statType: "Likes",
+  image: "./images/icon-facebook.svg",
+  newStat: '52',
+  tenddown: '▼ 2%',    
+  },
+  {
+  statType: "Likes",
+  image: "./images/icon-instagram.svg",
+  newStat: '5462',
+  tendance: '▲ 2257%',    
+  },
+    {
+  statType: "Profile Views",
+  image: "./images/icon-instagram.svg",
+  newStat: '52k',
+  tendance: '▲ 1375%',    
+  },
+  {
+  statType: "Retweets",
+  image: "./images/icon-twitter.svg",
+  newStat: '117',
+  tendance: '▲ 303%',    
+  },
+  {
+  statType: "Likes",
+  image: "./images/icon-twitter.svg",
+  newStat: '507',
+  tendance: '▲ 553%',    
+  },
+    {
+  statType: "Likes",
+  image: "./images/icon-youtube.svg" ,
+  newStat: '107',
+  tenddown: '▼ 19%',    
+  },
+  {
+    statType: "Total Views",
+  image: "./images/icon-youtube.svg" ,
+  newStat: '1407',
+  tenddown: '▼ 12%',    
+  },
+]
 
 function App() {
 
@@ -10,7 +69,7 @@ function App() {
     <p>Dark Mode</p>
   </header>
   <main>
-    <section className="global">
+    <section className="global"> 
       <div className="facebook">
         <p className="username"><img src="./images/icon-facebook.svg" alt="icone facebook"/> @nathanf</p>
         <p className="follows">1987</p>
@@ -30,7 +89,6 @@ function App() {
         <p className="tendance">▲ 1099 Today</p>
       </div>
       <div className="youtube">
-        
         <p className="username"><img src="./images/icon-youtube.svg" alt="icone youtube"/> Nathan F.</p>
         <p className="follows">8239</p>
         <p className="followers">SUBSCRIBERS</p>
@@ -38,55 +96,15 @@ function App() {
       </div>
     </section>
     <section className="today">
-      <h2>Overview - Today</h2>
-      <div>
-        <h3>Page Views </h3>
-        <img src="./images/icon-facebook.svg" alt="icone facebook"/>
-        <p className="new">87</p>
-        <p className="tendance-overview"> 3%</p>
-      </div>
-      <div>
-        <h3>Likes </h3>
-        <img src="./images/icon-facebook.svg" alt="icone facebook"/>
-        <p className="new">52</p>
-        <p className="tenddown-overview">▼ 2%</p>
-      </div>
-      <div> 
-        <h3>Likes </h3>
-        <img src="./images/icon-instagram.svg" alt="icone instagram"/>
-        <p className="new">5462</p>
-        <p className="tendance-overview"> 2257%</p>
-      </div>
-      <div>
-        <h3>Profile Views</h3>
-        <img src="./images/icon-instagram.svg"/>
-        <p className="new">52k</p>
-        <p className="tendance-overview"> 1375%</p>      
-      </div>
-      <div>
-        <h3>Retweeets </h3>
-        <img src="./images/icon-twitter.svg" alt="icone twitter"/>
-        <p className="new">117</p>
-        <p className="tendance-overview"> 303%</p>   
-      </div>
-      <div>
-        <h3>Likes </h3>
-        <img src="./images/icon-twitter.svg" alt="icone twitter"/>
-        <p className="new">507</p>
-        <p className="tendance-overview"> 553%</p>  
-      </div>
-      <div>
-        <h3>Likes </h3>
-        <img src="./images/icon-youtube.svg" alt="icone youtube"/>
-        <p className="new">107</p>
-        <p className="tenddown-overview"> 19%</p>  
-      </div>
-      <div>
-        <h3>Total Views </h3>
-        <img src="./images/icon-youtube.svg" alt="icone youtube"/>
-        <p className="new">1407</p>
-        <p className="tenddown-overview"> 12%</p>  
-      </div>
+          <h2>Overview - Today</h2>
+          {todayStats.map((stat, index) => (
+            <View  key={index}
+            statType={stat.statType}
+            image={stat.image}
+            newStat={stat.newStat}
+            tendance={stat.tendance}
+            tenddown={stat.tenddown}/>
+          ))}
     </section>
   </main>  
   <footer>
