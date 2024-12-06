@@ -4,21 +4,19 @@
 }
 @font-face {
     font-family: 'Inter-Bold';
-    src: url(./assets/Inter/static/Inter_24pt-Bold.ttf);
+    src: url(./assets/Inter/static/Inter_28pt-Bold.ttf);
 }
 
-:root{
+/*Light Theme par défaut - MOBILE FIRST*/
+:root{ 
     --main-font:'Inter-Regular-18px';
     --bold-font:'Inter-Bold';
-    --text-dark-light-theme:hsl(230, 17%, 14%);
+    --text-light-theme:hsl(230, 17%, 14%);
     --text-light-grey : hsl(228, 12%, 44%);
     --card-bg-light : hsl(227, 47%, 96%);
     --green:hsl(163, 72%, 41%);
     --red:hsl(356, 69%, 56%);
 }
-/* #### Light Theme
-
-- Very Pale Blue (Top BG Pattern): hsl(225, 100%, 98%)*/
 
 * {
     box-sizing:border-box;
@@ -42,14 +40,14 @@ header p:first-of-type{
 }
 
 header p:last-of-type{
-    margin:1rem 0 3rem;
+    margin:1rem 0 1rem;
 }
 
 header h1{
     margin:2rem 0 0 0;
     font-family:var(--bold-font);
     font-size: 22px;
-    color:var(--text-dark-light-theme);
+    color:var(--text-light-theme);
 }
 .global{
     display:flex;
@@ -97,7 +95,7 @@ header h1{
 
 .follows{
     font-size: var(--bold-font);
-    color:var(--text-dark-light-theme);
+    color:var(--text-light-theme);
     font-size: 5rem;
     font-weight: 700;
     margin:0;
@@ -160,8 +158,9 @@ h3{
 
 .new{
     font-size: var(--bold-font);
-    color:var(--text-dark-light-theme);
+    color:var(--text-light-theme);
     font-size: 2rem;
+    font-weight: bolder;
     margin:0;
     justify-self: start;
 }
@@ -186,4 +185,113 @@ footer {
 
 footer a {
     color: hsl(228, 45%, 44%); 
+}
+
+label{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/*#### Dark Theme - MOBILE First*/
+body.dark-mode{ 
+    --text-dark-theme :White;
+    --text-dark-grey : hsl(228, 34%, 66%);
+    --card-bg-dark : hsl(228, 28%, 20%);
+    background-color: hsl(230, 17%, 14%);
+}
+
+.dark-mode header{
+    color: var(--text-dark-grey);
+}
+
+.dark-mode header h1{
+    color:var(--text-dark-theme);
+}
+
+.switch-on .react-switch-bg {
+  background: linear-gradient(to right, #378fe6 0%, #3eda82 100%) !important;
+}
+
+.dark-mode .global div{
+    background-color: var(--card-bg-dark);
+    color:var(--text-dark-grey);
+}
+
+.dark-mode .follows{
+    color:var(--text-dark-theme);
+}
+
+.dark-mode h2{
+    color:var(--text-dark-grey);
+}
+
+.dark-mode .today div{
+    background-color: var(--card-bg-dark);
+}
+
+.dark-mode h3{
+    color:var(--text-dark-grey);
+}
+
+.dark-mode .new {
+    color:var(--text-dark-theme)
+}
+
+.dark-mode footer{
+    color:var(--text-dark-theme)
+}
+
+/* RESPONSIVE DESKTOP*/
+@media screen and (min-width:1080px){
+    header{
+        display: flex;
+        justify-content:center;
+        align-items: baseline;
+        gap:60rem;
+    }
+    
+    header p:first-of-type{
+    border-bottom: none;
+    margin: 0;
+    }
+
+    label{
+    display: flex;
+    margin-bottom: 2rem;
+    gap:1rem;
+    align-items: center;
+    }
+
+    .global{
+    flex-direction: row;
+    width: 85%;
+    justify-self: center;
+}
+
+.global div{
+    width:25%;
+}
+ h2{
+    width:100%;
+ }
+
+.today{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-self: center;
+    width: 85%;
+    gap:0;
+}
+
+.today div{
+    width :22.7%;
+    margin:1rem;
+}
+
+
+
+
+
+
 }

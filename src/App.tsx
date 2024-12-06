@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import Switch from "react-switch";
 import View from './components/View'
 import './App.css'
 
@@ -61,58 +63,86 @@ const todayStats : ViewProps[]=[{
 
 function App() {
 
-  return (
-    <>
-      <header>
-    <h1>Social Media Dashboard</h1>
-    <p>Total Followers: 23,004</p>
-    <p>Dark Mode</p>
-  </header>
-  <main>
-    <section className="global"> 
-      <div className="facebook">
-        <p className="username"><img src="./images/icon-facebook.svg" alt="icone facebook"/> @nathanf</p>
-        <p className="follows">1987</p>
-        <p className="followers">FOLLOWERS</p>
-        <p className="tendance">▲ 12 Today</p>
-      </div>
-      <div className="twitter">
-        <p className="username"><img src="./images/icon-twitter.svg" alt="icone tweeter"/> @nathanf</p>
-        <p className="follows">1044</p>
-        <p className="followers">FOLLOWERS</p>
-        <p className="tendance">▲ 99 Today</p>
-      </div>
-      <div className="instagram">
-        <p className="username"> <img src="./images/icon-instagram.svg" alt="icone instagram"/> @realnathanf</p>
-        <p className="follows">11k</p>
-        <p className="followers">FOLLOWERS</p>
-        <p className="tendance">▲ 1099 Today</p>
-      </div>
-      <div className="youtube">
-        <p className="username"><img src="./images/icon-youtube.svg" alt="icone youtube"/> Nathan F.</p>
-        <p className="follows">8239</p>
-        <p className="followers">SUBSCRIBERS</p>
-        <p className="tenddown">▼ 144 Today </p>
-      </div>
-    </section>
-    <section className="today">
-          <h2>Overview - Today</h2>
-          {todayStats.map((stat, index) => (
-            <View  key={index}
-            statType={stat.statType}
-            image={stat.image}
-            newStat={stat.newStat}
-            tendance={stat.tendance}
-            tenddown={stat.tenddown}/>
-          ))}
-    </section>
-  </main>  
-  <footer>
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
-    </>
-  )
-}
+  const [theme, setTheme] = useState(false);
+  const handleChange = (nextChecked:boolean) => {
+      setTheme(nextChecked); // Mise à jour de l'état avec la nouvelle valeur
+  };
 
+  useEffect(() => {
+    if (theme) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [theme]);
+  
+    return (
+      <>
+        <header>
+          <div className="wrap-header">
+            <h1>Social Media Dashboard</h1>
+            <p>Total Followers: 23,004</p>
+          </div>
+          <label>Dark Mode
+            <Switch
+              onChange={handleChange} // Fonction appelée lorsque le switch est changé
+              checked={theme} // L'état du switch
+              uncheckedIcon={false}  // désactive l'icône sur le côté non coché
+              checkedIcon={false}    // désactive l'icône sur le côté coché
+              height={30} // Hauteur du switch
+              width={60} // Largeur du switch
+              handleDiameter={25} // taille du bouton
+              offColor="#AEB3CB"       // couleur lorsque le switch est désactivé
+              offHandleColor="#fff"  // couleur du bouton (poignée) lorsque désactivé
+              onHandleColor="#fff"   // couleur du bouton (poignée) lorsque activé
+          className={theme ? "switch-on" : "switch-off"}  
+            />
+          </label>
+        </header>
+        <main>
+          <section className="global">
+            <div className="facebook">
+              <p className="username"><img src="./images/icon-facebook.svg" alt="icone facebook" /> @nathanf</p>
+              <p className="follows">1987</p>
+              <p className="followers">FOLLOWERS</p>
+              <p className="tendance">▲ 12 Today</p>
+            </div>
+            <div className="twitter">
+              <p className="username"><img src="./images/icon-twitter.svg" alt="icone tweeter" /> @nathanf</p>
+              <p className="follows">1044</p>
+              <p className="followers">FOLLOWERS</p>
+              <p className="tendance">▲ 99 Today</p>
+            </div>
+            <div className="instagram">
+              <p className="username"> <img src="./images/icon-instagram.svg" alt="icone instagram" /> @realnathanf</p>
+              <p className="follows">11k</p>
+              <p className="followers">FOLLOWERS</p>
+              <p className="tendance">▲ 1099 Today</p>
+            </div>
+            <div className="youtube">
+              <p className="username"><img src="./images/icon-youtube.svg" alt="icone youtube" /> Nathan F.</p>
+              <p className="follows">8239</p>
+              <p className="followers">SUBSCRIBERS</p>
+              <p className="tenddown">▼ 144 Today </p>
+            </div>
+          </section>
+          <section className="today">
+            <h2>Overview - Today</h2>
+            {todayStats.map((stat, index) => (
+              <View key={index}
+                statType={stat.statType}
+                image={stat.image}
+                newStat={stat.newStat}
+                tendance={stat.tendance}
+                tenddown={stat.tenddown} />
+            ))}
+          </section>
+        </main>
+        <footer>
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+          Coded by <a href="https://github.com/Maanon22">Manon Moutier</a>.
+        </footer>
+      </>
+    );
+  }
 export default App
