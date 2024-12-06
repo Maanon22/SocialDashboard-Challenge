@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Switch from "react-switch";
-import View from './components/View'
+import View from './src/components/View'
 import './App.css'
 
 interface ViewProps {

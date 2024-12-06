@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { useState } from 'react'
-import './index.css'
 import App from './App.tsx'
-import ThemeContext from './ThemeContext.tsx'
+import ThemeContext from "./src/ThemeContext.tsx"
+import React from 'react'
 
 function Main() {
   const [theme, setTheme] = useState<boolean>(false);
